@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('spurchased', function (Blueprint $table) {
             $table->id();
-            $table->integer('tahun_pembelian');
+            $table->date('tahun_pembelian');
             $table->string('nama_barang');
             $table->string('kode')->unique();
             $table->string('harga_satuan');

@@ -1,9 +1,4 @@
 <x-app-layout>
-    {{-- <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Sarpras Sekolah') }}
-        </h2>
-    </x-slot> --}}
     <div class="col-12 max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="row row-cards">
             <div class="col-sm-12 col-lg-6">
@@ -97,97 +92,123 @@
             </div>
         </div>
     </div>
-    <div class="col-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="mb-4">
-                <a href="{{ route('sekolah.create') }}" class="btn btn-primary">Tambah</a>
+    <div class="col-12 max-w-7xl mx-auto sm:px-6 lg:px-8 my-4">
+        <div class="row row-cards">
+            <div class="col-12">
+                <div class="mb-2">
+                    <a href="{{ route('sekolah.create') }}" class="btn btn-primary">Tambah</a>
+                </div>
             </div>
-            <div class="card card-body card-body-scrollable card-body-scrollable-shadow">
-                <div class="table-responsive">
-                    <table class="table table-vcenter card-table">
-                        <thead>
-                            <tr>
-                                <th class="w-4">Id</th>
-                                <th>Tahun Pembelian</th>
-                                <th>Nama Barang</th>
-                                <th>Kode Barang</th>
-                                <th>Harga Satuan</th>
-                                <th>Jumlah</th>
-                                <th>Total</th>
-                                <th>Pembeli</th>
-                                <th>Toko</th>
-                                <th>Keterangan</th>
-                                <th class="w-1">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                                $i = 1;
-                            @endphp
-                            @forelse ($spurchased as $item)
-                                <tr>
-                                    <td>
-                                        {{ $i++ }}
-                                    </td>
-                                    <td>
-                                        {{ $item->tahun_pembelian }}
-                                    </td>
-                                    <td>
-                                        {{ $item->nama_barang }}
-                                    </td>
-                                    <td>
-                                        {{ $item->kode }}
-                                    </td>
-                                    <td>
-                                        {{ $item->harga_satuan }}
-                                    </td>
-                                    <td>
-                                        {{ $item->jumlah }}
-                                    </td>
-                                    <td>
-                                        {{ $item->total_harga }}
-                                    </td>
-                                    <td>
-                                        {{ $item->pembeli }}
-                                    </td>
-                                    <td>
-                                        {{ $item->toko }}
-                                    </td>
-                                    <td>
-                                        {{ $item->keterangan }}
-                                    </td>
-                                    <td>
-                                        <div class="btn-list flex-nowrap">
-                                            <div class="dropdown">
-                                                <button class="btn dropdown-toggle align-text-top"
-                                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                                    Actions
-                                                </button>
-                                                <div class="dropdown-menu dropdown-menu-end">
-                                                    <a href="{{ route('sekolah.edit', $item->id) }}"
-                                                        class="dropdown-item">
-                                                        Edit
-                                                    </a>
-                                                    <form action="{{ route('sekolah.delete', $item->id) }}"
-                                                        method="post">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button type="submit"
-                                                            onclick="return confirm('Apakah anda yain ingin menghapus sekolah ini?')"
-                                                            class="dropdown-item">Delete</button>
-                                                    </form>
+            <div class="col-12">
+                <div class="card" style="height: 28rem;">
+                    <div class="card-body card-body-scrollable card-body-scrollable-shadow p-0 rounded">
+                        <style>
+                            .table-responsive {
+                                position: relative;
+                                height: 27rem;
+                                overflow-y: auto;
+                            }
+
+                            .table-responsive thead th {
+                                position: sticky;
+                                top: 0;
+                                z-index: 1;
+                                background: white;
+                            }
+
+                            .table-responsive tbody tr:nth-child(odd) {
+                                background-color: #f9f9f9;
+                            }
+                        </style>
+                        <div class="table-responsive">
+                            <table class="table table-vcenter card-table">
+                                <thead>
+                                    <tr>
+                                        <th class="w-4">No</th>
+                                        <th>Tanggal Pembelian</th>
+                                        <th>Nama Barang</th>
+                                        <th>Kode Barang</th>
+                                        <th>Harga Satuan</th>
+                                        <th>Jumlah</th>
+                                        <th>Total</th>
+                                        <th>Pembeli</th>
+                                        <th>Toko</th>
+                                        <th>Keterangan</th>
+                                        <th class="w-1">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @php
+                                        $i = 1;
+                                    @endphp
+                                    @forelse ($spurchased as $item)
+                                        <tr>
+                                            <td>
+                                                {{ $i++ }}
+                                            </td>
+                                            <td>
+                                                {{ $item->tahun_pembelian }}
+                                            </td>
+                                            <td>
+                                                {{ $item->nama_barang }}
+                                            </td>
+                                            <td>
+                                                {{ $item->kode }}
+                                            </td>
+                                            <td>
+                                                {{ $item->harga_satuan }}
+                                            </td>
+                                            <td>
+                                                {{ $item->jumlah }}
+                                            </td>
+                                            <td>
+                                                {{ $item->total_harga }}
+                                            </td>
+                                            <td>
+                                                {{ $item->pembeli }}
+                                            </td>
+                                            <td>
+                                                {{ $item->toko }}
+                                            </td>
+                                            <td>
+                                                {{ $item->keterangan }}
+                                            </td>
+                                            <td>
+                                                <div class="hidden sm:flex sm:items-center sm:ms-6">
+                                                    <x-dropdown align="right" width="48">
+                                                        <x-slot name="trigger">
+                                                            <button
+                                                                class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 dark:text-gray-400 bg-white dark:bg-gray-800 hover:text-gray-700 dark:hover:text-gray-300 focus:outline-none transition ease-in-out duration-150"
+                                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                                Actions
+                                                            </button>
+                                                        </x-slot>
+
+                                                        <x-slot name="content">
+                                                            <x-dropdown-link :href="route('sekolah.edit', $item->id)" wire:navigate>
+                                                                {{ __('Edit') }}
+                                                            </x-dropdown-link>
+                                                            <x-dropdown-link :action="route('sekolah.delete', $item->id)" method="post">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit"
+                                                                    onclick="return confirm('Apakah anda yain ingin menghapus sekolah ini?')"
+                                                                    class="dropdown-item">Delete</button>
+                                                            </x-dropdown-link>
+                                                        </x-slot>
+                                                    </x-dropdown>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @empty
-                                <tr>
-                                    <td colspan="2" class="text-center">Tidak ada data</td>
-                                </tr>
-                            @endforelse
-                        </tbody>
-                    </table>
+                                            </td>
+                                        </tr>
+                                    @empty
+                                        <tr>
+                                            <td colspan="11" class="text-center">Tidak ada data</td>
+                                        </tr>
+                                    @endforelse
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
